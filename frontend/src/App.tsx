@@ -18,14 +18,12 @@ import Team from "./pages/Team";
 export default function App() {
   return (
     <Routes>
-
       {/* ================= HOME ================= */}
 
       <Route
         path="/"
         element={<Home />}
       />
-
 
       {/* ================= CUSTOMER ================= */}
 
@@ -74,7 +72,6 @@ export default function App() {
         element={<CustomerSupport />}
       />
 
-
       {/* ================= FPO TEAM ================= */}
 
       <Route
@@ -87,9 +84,6 @@ export default function App() {
         element={<Team />}
       />
 
-
-      {/* ================= FALLBACK ================= */}
-
       <Route
         path="/team"
         element={
@@ -100,6 +94,8 @@ export default function App() {
         }
       />
 
+      {/* ================= FALLBACK ================= */}
+
       <Route
         path="*"
         element={
@@ -109,7 +105,6 @@ export default function App() {
           />
         }
       />
-
     </Routes>
   );
 }

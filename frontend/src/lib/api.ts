@@ -91,6 +91,12 @@ async function getErrorMessage(
         )
         .join(", ");
     }
+
+    if (
+      typeof error?.message === "string"
+    ) {
+      return error.message;
+    }
   } catch {
     // Ignore JSON parsing errors.
   }
