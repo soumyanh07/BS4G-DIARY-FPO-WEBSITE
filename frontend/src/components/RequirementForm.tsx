@@ -24,13 +24,25 @@ export default function RequirementForm() {
     setError("");
     setSuccess(false);
 
-    if (!name.trim()) {
-      setError("Please enter your name.");
+    if (!name.trim() || name.trim().length < 2) {
+      setError("Please enter your full name (at least 2 characters).");
       return;
     }
 
     if (!contact.trim()) {
       setError("Please enter your contact number.");
+      return;
+    }
+
+    // Client-side contact validation to match backend rules
+    const cleanedContact = contact.replace(/\s|\-|\+/g, "");
+    if (!/^[0-9]+$/.test(cleanedContact)) {
+      setError("Contact must contain digits only (0-9). e.g. 9480123456");
+      return;
+    }
+
+    if (cleanedContact.length < 10 || cleanedContact.length > 15) {
+      setError("Contact must be between 10 and 15 digits.");
       return;
     }
 
@@ -41,9 +53,9 @@ export default function RequirementForm() {
       return;
     }
 
-    if (!location.trim()) {
+    if (!location.trim() || location.trim().length < 2) {
       setError(
-        "Please enter the delivery location.",
+        "Please enter the delivery location (at least 2 characters).",
       );
       return;
     }
@@ -53,7 +65,7 @@ export default function RequirementForm() {
 
       await createRequirement({
         name: name.trim(),
-        contact: contact.trim(),
+        contact: cleanedContact,
         qty_litres: Number(quantity),
         location: location.trim(),
         note: note.trim() || undefined,
@@ -66,6 +78,16 @@ export default function RequirementForm() {
       setQuantity("");
       setLocation("");
       setNote("");
+
+      // Notify other parts of the app (and other tabs) that requirements changed
+      try {
+        // dispatch in current window
+        window.dispatchEvent(new Event("requirements:changed"));
+        // write a timestamp to localStorage so other tabs get a storage event
+        localStorage.setItem("requirements_updated", String(Date.now()));
+      } catch {
+        // ignore if storage is not available
+      }
     } catch (err) {
       setError(
         err instanceof Error

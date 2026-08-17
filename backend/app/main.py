@@ -1,5 +1,5 @@
 import os
-
+from app.routers import customer, requirements, team
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -65,4 +65,7 @@ app.include_router(
 
 app.include_router(
     team.router,
+)
+app.include_router(
+    customer.router,
 )

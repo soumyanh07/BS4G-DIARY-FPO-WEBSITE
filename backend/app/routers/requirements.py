@@ -7,7 +7,7 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.auth import require_team
+from app.auth import require_customer, require_team
 from app.database import get_db
 from app.models import Requirement
 from app.schemas import (
@@ -23,6 +23,10 @@ router = APIRouter(
 )
 
 
+# ============================================================
+# CREATE REQUIREMENT - CUSTOMER
+# ============================================================
+
 @router.post(
     "",
     response_model=RequirementResponse,
@@ -31,8 +35,18 @@ router = APIRouter(
 def create_requirement(
     data: RequirementCreate,
     db: Session = Depends(get_db),
+    current_customer: dict = Depends(require_customer),
 ):
+    customer_id = current_customer.get("customer_id")
+
+    if customer_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid customer token",
+        )
+
     requirement = Requirement(
+        customer_id=customer_id,
         name=data.name.strip(),
         contact=data.contact.strip(),
         qty_litres=data.qty_litres,
@@ -47,6 +61,10 @@ def create_requirement(
 
     return requirement
 
+
+# ============================================================
+# GET ALL REQUIREMENTS - TEAM
+# ============================================================
 
 @router.get(
     "",
@@ -65,6 +83,10 @@ def get_requirements(
         db.scalars(statement).all()
     )
 
+
+# ============================================================
+# EXPORT REQUIREMENTS - TEAM
+# ============================================================
 
 @router.get(
     "/export",
@@ -89,6 +111,7 @@ def export_requirements(
     writer.writerow(
         [
             "ID",
+            "Customer ID",
             "Name",
             "Contact",
             "Quantity (Litres/Day)",
@@ -105,14 +128,23 @@ def export_requirements(
         writer.writerow(
             [
                 item.id,
+                item.customer_id or "",
                 item.name,
                 item.contact,
                 item.qty_litres,
                 item.location,
                 item.note or "",
                 item.status,
-                item.submitted_at.isoformat(),
-                item.updated_at.isoformat(),
+                (
+                    item.submitted_at.isoformat()
+                    if item.submitted_at
+                    else ""
+                ),
+                (
+                    item.updated_at.isoformat()
+                    if item.updated_at
+                    else ""
+                ),
                 (
                     item.contacted_at.isoformat()
                     if item.contacted_at
@@ -134,6 +166,10 @@ def export_requirements(
         },
     )
 
+
+# ============================================================
+# GET SINGLE REQUIREMENT - TEAM
+# ============================================================
 
 @router.get(
     "/{requirement_id}",
@@ -157,6 +193,10 @@ def get_requirement(
 
     return requirement
 
+
+# ============================================================
+# UPDATE REQUIREMENT STATUS - TEAM
+# ============================================================
 
 @router.patch(
     "/{requirement_id}/status",
