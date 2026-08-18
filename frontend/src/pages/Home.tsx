@@ -22,10 +22,7 @@ export default function Home() {
       <header className="home-header">
         <div className="home-header-inner">
           <Link to="/" className="home-logo">
-            <img
-              src="/logo.png"
-              alt="BS4G Dairy FPO"
-            />
+            <img src="/logo.png" alt="BS4G Dairy FPO" />
 
             <div>
               <div className="home-logo-main">BS4G</div>
@@ -36,10 +33,7 @@ export default function Home() {
           {/* DESKTOP NAV */}
           <nav className="home-desktop-nav">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-              >
+              <a key={link.label} href={link.href}>
                 {link.label}
               </a>
             ))}
@@ -63,10 +57,9 @@ export default function Home() {
           <button
             type="button"
             className="home-mobile-menu-button"
-            onClick={() =>
-              setMobileMenuOpen(!mobileMenuOpen)
-            }
+            onClick={() => setMobileMenuOpen((open) => !open)}
             aria-label="Toggle navigation"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <X size={22} />
@@ -149,12 +142,12 @@ export default function Home() {
               </div>
             </div>
 
+            {/* PROCUREMENT CARD */}
             <div className="home-ledger-card">
               <div className="home-ledger-header">
                 <span className="home-ledger-dot" />
-                <span>
-                  Daily procurement ledger
-                </span>
+
+                <span>Daily procurement ledger</span>
 
                 <span className="home-active-badge">
                   Active
@@ -174,6 +167,7 @@ export default function Home() {
               <div className="home-stat-grid">
                 <div>
                   <strong>7</strong>
+
                   <span>
                     Outlets around Bidar
                   </span>
@@ -181,12 +175,16 @@ export default function Home() {
 
                 <div>
                   <strong>8</strong>
-                  <span>Board members</span>
+
+                  <span>
+                    Board members
+                  </span>
                 </div>
               </div>
 
               <div className="home-fpo-badge">
                 <strong>FPO</strong>
+
                 <span>
                   Farmer producer organization
                 </span>
@@ -619,6 +617,7 @@ export default function Home() {
 
         <div className="home-footer-bottom">
           <span>© 2026 BS4G Dairy FPO</span>
+
           <span>
             Ghatboral · Bidar · Karnataka
           </span>
@@ -679,8 +678,11 @@ function ContactBlock({
   return (
     <div className="home-contact-block">
       <span>{title}</span>
+
       <strong>{heading}</strong>
+
       <p>{text}</p>
+
       <small>{link}</small>
     </div>
   );

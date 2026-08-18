@@ -1,6 +1,11 @@
 /* =========================================================
-   BS4G HOME PAGE
-   RESPONSIVE DESKTOP / TABLET / MOBILE
+   BS4G DAIRY FPO — HOME PAGE
+   Clean Responsive Styles
+   Desktop / Tablet / Mobile
+========================================================= */
+
+/* =========================================================
+   GLOBAL RESET
 ========================================================= */
 
 html,
@@ -9,6 +14,8 @@ body,
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
 }
 
@@ -24,6 +31,10 @@ video {
   max-width: 100%;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* =========================================================
    PAGE
 ========================================================= */
@@ -31,18 +42,22 @@ video {
 .home-page {
   width: 100%;
   min-height: 100vh;
+
   background: #f8faf8;
   color: #19352b;
+
   font-family:
     "Public Sans",
     Arial,
     sans-serif;
+
   overflow-x: hidden;
 }
 
 .home-container {
-  width: min(1180px, 100%);
-  margin: 0 auto;
+  width: min(1180px, calc(100% - 56px));
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* =========================================================
@@ -53,70 +68,102 @@ video {
   position: sticky;
   top: 0;
   z-index: 100;
+
   width: 100%;
+
   background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid #e7ece8;
+
   backdrop-filter: blur(12px);
 }
 
 .home-header-inner {
-  width: min(1180px, 100%);
+  width: min(1180px, calc(100% - 56px));
   min-height: 76px;
+
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 24px;
 }
 
 .home-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
 
-  color: #173b68;
+  gap: 12px;
+
+  color: #1f3a5c;
   text-decoration: none;
 
   flex-shrink: 0;
 }
 
 .home-logo img {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
+
   object-fit: contain;
+  display: block;
 }
 
 .home-logo-main {
-  font-size: 18px;
+  color: #1f3a5c;
+
+  font-family:
+    "Fraunces",
+    Georgia,
+    serif;
+
+  font-size: 22px;
   line-height: 1;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+
+  font-weight: 700;
 }
 
 .home-logo-sub {
   margin-top: 4px;
 
-  color: #5f6f68;
+  color: #6d7974;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
   font-size: 10px;
-  letter-spacing: 1.5px;
+  line-height: 1;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
 
 .home-desktop-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: flex-end;
+
+  gap: 22px;
 }
 
-.home-desktop-nav > a:not(.home-customer-button):not(.home-team-button) {
-  color: #53635c;
+.home-desktop-nav a {
+  color: #1f3a5c;
+
   font-size: 12px;
   font-weight: 600;
+
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.home-desktop-nav > a:hover {
+.home-desktop-nav a:hover {
   color: #087c43;
 }
 
@@ -129,37 +176,47 @@ video {
   min-height: 42px;
   padding: 0 16px;
 
-  border-radius: 8px;
+  border-radius: 10px;
 
   font-size: 12px;
   font-weight: 700;
-  text-decoration: none;
+
+  text-decoration: none !important;
   white-space: nowrap;
 }
 
 .home-customer-button {
-  background: #087c43;
-  color: white;
+  background: #a8733c;
+  color: white !important;
 }
 
 .home-team-button {
-  color: #173b68;
-  border: 1px solid #cad7df;
+  background: white;
+  color: #1f3a5c !important;
+
+  border: 1px solid #d9cba6;
 }
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
 .home-mobile-menu-button {
   display: none;
 
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
 
   align-items: center;
   justify-content: center;
 
-  background: white;
-  border: 1px solid #d8e2eb;
+  border: 1px solid #d9cba6;
+  border-radius: 10px;
 
-  color: #173b68;
+  background: white;
+  color: #1f3a5c;
+
+  cursor: pointer;
 }
 
 .home-mobile-menu {
@@ -171,6 +228,8 @@ video {
 ========================================================= */
 
 .home-hero {
+  width: 100%;
+
   background:
     linear-gradient(
       135deg,
@@ -185,14 +244,16 @@ video {
 .home-hero-grid {
   min-height: 600px;
 
-  padding: 90px 28px 85px;
+  padding: 90px 0 85px;
 
   display: grid;
+
   grid-template-columns:
     minmax(0, 1.25fr)
     minmax(330px, 0.75fr);
 
   align-items: center;
+
   gap: 70px;
 }
 
@@ -212,34 +273,51 @@ video {
   text-transform: uppercase;
 }
 
-.home-hero h1 {
+.home-hero-content h1 {
   margin: 0;
 
   color: #173b68;
 
+  font-family:
+    "Fraunces",
+    Georgia,
+    serif;
+
   font-size: 58px;
   line-height: 1.03;
+
   letter-spacing: -2.5px;
+
   font-weight: 750;
+
+  overflow-wrap: break-word;
 }
 
-.home-hero h1 span {
+.home-hero-content h1 span {
   color: #087c43;
 }
 
 .home-hero-content > p {
   max-width: 610px;
+
   margin: 25px 0 0;
 
   color: #617068;
 
   font-size: 16px;
   line-height: 1.75;
+
+  overflow-wrap: break-word;
 }
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .home-hero-buttons {
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   margin-top: 30px;
@@ -251,15 +329,18 @@ video {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+
+  gap: 10px;
 
   min-height: 48px;
+
   padding: 0 21px;
 
   border-radius: 8px;
 
   font-size: 13px;
   font-weight: 700;
+
   text-decoration: none;
 
   box-sizing: border-box;
@@ -273,11 +354,25 @@ video {
     0 8px 20px rgba(8, 124, 67, 0.18);
 }
 
+.home-primary-button:hover {
+  background: #076d3b;
+}
+
 .home-secondary-button {
-  border: 1px solid #cbd9d1;
   background: white;
+
+  border: 1px solid #cbd9d1;
+
   color: #344c42;
 }
+
+.home-secondary-button:hover {
+  border-color: #a8733c;
+}
+
+/* =========================================================
+   HERO LEDGER CARD
+========================================================= */
 
 .home-ledger-card {
   width: 100%;
@@ -286,6 +381,7 @@ video {
   padding: 28px;
 
   background: white;
+
   border: 1px solid #e0e9e3;
   border-radius: 18px;
 
@@ -296,6 +392,7 @@ video {
 .home-ledger-header {
   display: flex;
   align-items: center;
+
   gap: 8px;
 
   color: #596a62;
@@ -311,6 +408,7 @@ video {
   flex-shrink: 0;
 
   border-radius: 50%;
+
   background: #16864a;
 }
 
@@ -335,7 +433,9 @@ video {
 
   font-size: 52px;
   line-height: 1;
+
   letter-spacing: -2px;
+
   font-weight: 750;
 }
 
@@ -343,6 +443,7 @@ video {
   margin-top: 8px;
 
   color: #7a8881;
+
   font-size: 11px;
 }
 
@@ -356,7 +457,9 @@ video {
 
 .home-stat-grid {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 20px;
 }
 
@@ -364,6 +467,7 @@ video {
   display: block;
 
   color: #087c43;
+
   font-size: 30px;
   font-weight: 750;
 }
@@ -374,6 +478,7 @@ video {
   margin-top: 3px;
 
   color: #6c7973;
+
   font-size: 10px;
   line-height: 1.4;
 }
@@ -381,6 +486,7 @@ video {
 .home-fpo-badge {
   display: flex;
   flex-direction: column;
+
   gap: 3px;
 
   margin-top: 27px;
@@ -395,6 +501,7 @@ video {
 
 .home-fpo-badge span {
   color: #7a8881;
+
   font-size: 10px;
 }
 
@@ -404,7 +511,8 @@ video {
 
 .home-section {
   width: 100%;
-  padding: 90px 28px;
+
+  padding: 90px 0;
 
   background: white;
 }
@@ -422,26 +530,42 @@ video {
   font-weight: 800;
 
   letter-spacing: 1.5px;
+
   text-transform: uppercase;
 }
 
 .home-two-column {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 70px;
 
   align-items: start;
 }
 
 .home-section-title {
+  min-width: 0;
+
   margin: 0;
 
   color: #173b68;
 
+  font-family:
+    "Fraunces",
+    Georgia,
+    serif;
+
   font-size: 43px;
   line-height: 1.08;
+
   letter-spacing: -1.6px;
+
   font-weight: 750;
+
+  overflow-wrap: break-word;
 }
 
 .home-section-title span {
@@ -449,20 +573,25 @@ video {
 }
 
 .home-body-text {
+  min-width: 0;
+
   margin: 0 0 18px;
 
   color: #66756e;
 
   font-size: 14px;
   line-height: 1.8;
+
+  overflow-wrap: break-word;
 }
 
 /* =========================================================
-   INFO CARDS
+   INFORMATION CARDS
 ========================================================= */
 
 .home-info-grid {
   display: grid;
+
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
@@ -471,13 +600,17 @@ video {
   margin-top: 65px;
 
   background: #dfe8e2;
+
   border: 1px solid #dfe8e2;
 }
 
 .home-info-card {
   display: flex;
   flex-direction: column;
+
   gap: 8px;
+
+  min-width: 0;
 
   padding: 23px;
 
@@ -488,12 +621,15 @@ video {
   color: #7a8881;
 
   font-size: 10px;
+
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .home-info-card strong {
   color: #173b68;
+
+  overflow-wrap: break-word;
 }
 
 /* =========================================================
@@ -502,6 +638,7 @@ video {
 
 .home-activity-grid {
   display: grid;
+
   grid-template-columns:
     repeat(4, minmax(0, 1fr));
 
@@ -511,16 +648,20 @@ video {
 }
 
 .home-activity-card {
+  min-width: 0;
   min-height: 210px;
+
   padding: 25px;
 
   background: white;
+
   border: 1px solid #e0e8e3;
   border-radius: 13px;
 }
 
 .home-activity-card > span {
   color: #16864a;
+
   font-size: 11px;
   font-weight: 800;
 }
@@ -529,6 +670,7 @@ video {
   margin: 30px 0 10px;
 
   color: #173b68;
+
   font-size: 20px;
 }
 
@@ -536,8 +678,11 @@ video {
   margin: 0;
 
   color: #66756e;
+
   font-size: 12px;
   line-height: 1.7;
+
+  overflow-wrap: break-word;
 }
 
 /* =========================================================
@@ -547,12 +692,15 @@ video {
 .home-notice {
   display: flex;
   flex-direction: column;
+
   gap: 5px;
 
   margin-top: 45px;
+
   padding: 16px 18px;
 
   background: #f5f8f6;
+
   border: 1px solid #e1e9e4;
   border-radius: 9px;
 
@@ -568,6 +716,7 @@ video {
 
 .home-outlet-grid {
   display: grid;
+
   grid-template-columns:
     repeat(4, minmax(0, 1fr));
 
@@ -577,7 +726,9 @@ video {
 }
 
 .home-outlet-card {
+  min-width: 0;
   min-height: 105px;
+
   padding: 20px;
 
   display: flex;
@@ -585,6 +736,7 @@ video {
   justify-content: space-between;
 
   background: white;
+
   border: 1px solid #e0e8e3;
   border-radius: 10px;
 }
@@ -598,6 +750,8 @@ video {
 
 .home-outlet-card strong {
   color: #173b68;
+
+  overflow-wrap: break-word;
 }
 
 .home-disclaimer {
@@ -624,8 +778,14 @@ video {
 
 .home-connect-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 100px;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  gap: 70px;
+
+  align-items: start;
 }
 
 .home-dark-title {
@@ -633,8 +793,14 @@ video {
 
   color: white;
 
+  font-family:
+    "Fraunces",
+    Georgia,
+    serif;
+
   font-size: 52px;
   line-height: 1.05;
+
   letter-spacing: -2px;
 }
 
@@ -654,27 +820,37 @@ video {
   color: #173b68;
 }
 
+.home-light-button:hover {
+  background: #f4f8f6;
+}
+
 .home-contact-panel {
-  border-top: 1px solid rgba(255,255,255,0.2);
+  min-width: 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .home-contact-block {
   display: flex;
   flex-direction: column;
+
   gap: 5px;
 
   padding: 22px 0;
 
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .home-contact-block > span {
   color: #c7d7d0;
+
   font-size: 10px;
 }
 
 .home-contact-block strong {
   color: white;
+
+  overflow-wrap: break-word;
 }
 
 .home-contact-block p {
@@ -684,6 +860,8 @@ video {
 
   font-size: 12px;
   line-height: 1.6;
+
+  overflow-wrap: break-word;
 }
 
 .home-contact-block small {
@@ -701,9 +879,12 @@ video {
 
 .home-requirement-grid {
   display: grid;
-  grid-template-columns: 0.75fr 1.25fr;
 
-  gap: 75px;
+  grid-template-columns:
+    minmax(0, 0.75fr)
+    minmax(0, 1.25fr);
+
+  gap: 70px;
 
   align-items: start;
 }
@@ -711,6 +892,7 @@ video {
 .home-tags {
   display: flex;
   flex-wrap: wrap;
+
   gap: 8px;
 
   margin-top: 28px;
@@ -731,9 +913,12 @@ video {
 }
 
 .home-requirement-card {
+  min-width: 0;
+
   padding: 27px;
 
   background: white;
+
   border: 1px solid #dfe8e3;
   border-radius: 16px;
 
@@ -756,7 +941,10 @@ video {
 .home-login-prompt > div {
   display: flex;
   flex-direction: column;
+
   gap: 5px;
+
+  min-width: 0;
 }
 
 .home-login-prompt strong {
@@ -765,6 +953,7 @@ video {
 
 .home-login-prompt span {
   color: #78857f;
+
   font-size: 11px;
   line-height: 1.5;
 }
@@ -772,22 +961,33 @@ video {
 .home-register-prompt {
   display: flex;
   align-items: center;
+
+  flex-wrap: wrap;
+
   gap: 7px;
 
   margin-top: 14px;
 
   color: #78857f;
+
   font-size: 11px;
 }
 
 .home-register-link {
   color: #1269b0;
+
   text-decoration: none;
+
   font-weight: 700;
+}
+
+.home-register-link:hover {
+  text-decoration: underline;
 }
 
 .home-form-preview {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
 
   gap: 16px;
@@ -800,6 +1000,7 @@ video {
 
   display: flex;
   flex-direction: column;
+
   gap: 7px;
 }
 
@@ -824,23 +1025,31 @@ video {
   color: #a1aaa6;
 
   font-size: 11px;
+
+  overflow-wrap: break-word;
 }
 
 .home-input-preview {
   min-height: 44px;
+
   padding: 0 12px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  gap: 8px;
 }
 
 .home-input-preview small {
+  flex-shrink: 0;
+
   font-size: 9px;
 }
 
 .home-textarea-preview {
   min-height: 76px;
+
   padding: 12px;
 }
 
@@ -872,6 +1081,10 @@ video {
   text-decoration: none;
 }
 
+.home-form-button:hover {
+  background: #076d3b;
+}
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -880,26 +1093,32 @@ video {
   background: #102f3d;
   color: white;
 
-  padding: 60px 28px 0;
+  padding: 60px 0 0;
 }
 
 .home-footer-grid {
   display: grid;
-  grid-template-columns:
-    1.6fr 0.8fr 0.8fr 0.8fr;
 
-  gap: 60px;
+  grid-template-columns:
+    1.6fr
+    0.8fr
+    0.8fr
+    0.8fr;
+
+  gap: 40px;
 
   padding-bottom: 50px;
 }
 
 .home-footer-brand {
+  min-width: 0;
   max-width: 350px;
 }
 
 .home-footer-logo {
   display: flex;
   align-items: center;
+
   gap: 10px;
 
   color: white;
@@ -909,6 +1128,7 @@ video {
 .home-footer-logo img {
   width: 43px;
   height: 43px;
+
   object-fit: contain;
 }
 
@@ -917,8 +1137,13 @@ video {
   flex-direction: column;
 }
 
+.home-footer-logo strong {
+  color: white;
+}
+
 .home-footer-logo span {
   color: #a8b9b8;
+
   font-size: 10px;
 }
 
@@ -927,12 +1152,17 @@ video {
 
   font-size: 11px;
   line-height: 1.7;
+
+  overflow-wrap: break-word;
 }
 
 .home-footer-column {
   display: flex;
   flex-direction: column;
+
   gap: 11px;
+
+  min-width: 0;
 }
 
 .home-footer-column h4 {
@@ -941,6 +1171,7 @@ video {
   color: white;
 
   font-size: 11px;
+
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -950,7 +1181,10 @@ video {
   color: #a8b9b8;
 
   font-size: 10px;
+
   text-decoration: none;
+
+  overflow-wrap: break-word;
 }
 
 .home-footer-column a:hover {
@@ -958,12 +1192,13 @@ video {
 }
 
 .home-footer-bottom {
-  width: min(1180px, 100%);
+  width: min(1180px, calc(100% - 56px));
+
   margin: 0 auto;
 
   padding: 20px 0;
 
-  border-top: 1px solid rgba(255,255,255,0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 
   display: flex;
   justify-content: space-between;
@@ -980,8 +1215,17 @@ video {
 ========================================================= */
 
 @media (max-width: 1000px) {
+  .home-container,
+  .home-header-inner {
+    width: min(100% - 40px, 900px);
+  }
+
+  .home-footer-bottom {
+    width: min(100% - 40px, 900px);
+  }
+
   .home-desktop-nav {
-    gap: 10px;
+    gap: 12px;
   }
 
   .home-desktop-nav
@@ -991,857 +1235,38 @@ video {
 
   .home-hero-grid {
     grid-template-columns: 1fr;
+
     gap: 45px;
+  }
+
+  .home-two-column {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
   }
 
   .home-activity-grid {
     grid-template-columns: 1fr 1fr;
   }
 
+  .home-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home-outlet-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .home-connect-grid {
     grid-template-columns: 1fr;
+
     gap: 50px;
   }
 
   .home-requirement-grid {
     grid-template-columns: 1fr;
+
     gap: 45px;
-  }
-
-  .home-footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-  .home-header-inner {
-    min-height: 66px;
-    padding: 0 16px;
-  }
-
-  .home-logo img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .home-logo-main {
-    font-size: 16px;
-  }
-
-  .home-logo-sub {
-    font-size: 9px;
-  }
-
-  .home-desktop-nav {
-    display: none;
-  }
-
-  .home-mobile-menu-button {
-    display: flex;
-  }
-
-  .home-mobile-menu {
-    display: flex;
-    flex-direction: column;
-
-    padding: 8px 16px 18px;
-
-    background: white;
-    border-top: 1px solid #e7ece8;
-  }
-
-  .home-mobile-menu a {
-    padding: 15px 4px;
-
-    border-bottom: 1px solid #edf1ef;
-
-    color: #344c42;
-
-    font-size: 12px;
-    font-weight: 700;
-
-    text-decoration: none;
-  }
-
-  .home-mobile-customer,
-  .home-mobile-team {
-    margin-top: 12px;
-
-    text-align: center;
-
-    border-radius: 8px !important;
-  }
-
-  .home-mobile-customer {
-    background: #087c43;
-    color: white !important;
-  }
-
-  .home-mobile-team {
-    border: 1px solid #cad7df !important;
-    color: #173b68 !important;
-  }
-
-  .home-hero-grid {
-    min-height: auto;
-
-    padding: 55px 18px 50px;
-
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .home-location {
-    margin-bottom: 18px;
-    font-size: 9px;
-  }
-
-  .home-hero h1 {
-    font-size: 38px;
-    line-height: 1.06;
-    letter-spacing: -1.5px;
-  }
-
-  .home-hero-content > p {
-    margin-top: 20px;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  .home-hero-buttons {
-    flex-direction: column;
-    align-items: stretch;
-
-    margin-top: 25px;
-  }
-
-  .home-primary-button,
-  .home-secondary-button {
-    width: 100%;
-  }
-
-  .home-ledger-card {
-    padding: 22px;
-  }
-
-  .home-big-number {
-    margin-top: 30px;
-    font-size: 42px;
-  }
-
-  .home-section {
-    padding: 60px 18px;
-  }
-
-  .home-section-number {
-    margin-bottom: 22px;
-    font-size: 9px;
-  }
-
-  .home-two-column {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .home-section-title {
-    font-size: 32px;
-    letter-spacing: -1.2px;
-  }
-
-  .home-body-text {
-    font-size: 13px;
-  }
-
-  .home-info-grid {
-    grid-template-columns: 1fr;
-    margin-top: 40px;
-  }
-
-  .home-info-card {
-    padding: 18px;
-  }
-
-  .home-activity-grid {
-    grid-template-columns: 1fr;
-    margin-top: 35px;
-  }
-
-  .home-activity-card {
-    min-height: auto;
-    padding: 22px;
-  }
-
-  .home-activity-card h3 {
-    margin-top: 20px;
-  }
-
-  .home-outlet-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .home-outlet-card {
-    min-height: 100px;
-    padding: 16px;
-  }
-
-  .home-connect-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .home-dark-title {
-    font-size: 38px;
-    letter-spacing: -1.5px;
-  }
-
-  .home-requirement-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .home-requirement-card {
-    padding: 20px;
-  }
-
-  .home-login-prompt {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .home-login-prompt .home-primary-button {
-    width: 100%;
-  }
-
-  .home-register-prompt {
-    flex-wrap: wrap;
-  }
-
-  .home-form-preview {
-    grid-template-columns: 1fr;
-  }
-
-  .home-preview-full {
-    grid-column: auto;
-  }
-
-  .home-footer {
-    padding: 45px 18px 0;
-  }
-
-  .home-footer-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .home-footer-bottom {
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 380px) {
-  .home-hero h1 {
-    font-size: 34px;
-  }
-
-  .home-big-number {
-    font-size: 38px;
-  }
-
-  .home-section-title {
-    font-size: 29px;
-  }
-
-  .home-outlet-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .home-stat-grid {
-    gap: 12px;
-  }
-}
-
-/* =========================================================
-   BS4G HOME PAGE - RESPONSIVE DESIGN
-   Desktop remains unchanged.
-   Mobile automatically switches to a single-column layout.
-========================================================= */
-
-html,
-body,
-#root {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-  body {
-    overflow-x: hidden;
-  }
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-  body {
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  main {
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  section {
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* Header */
-
-  header {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* Hero */
-
-  main section:first-child > div {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  /* Desktop grids become single column */
-
-  [style*="gridTemplateColumns"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Hero */
-
-  [style*="gridTemplateColumns: \"minmax(0, 1.25fr) minmax(330px, 0.75fr)\""] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Two column layouts */
-
-  [style*="gridTemplateColumns: \"1fr 1fr\""] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Four card grids */
-
-  [style*="repeat(4, minmax(0, 1fr))"] {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  /* Three card grids */
-
-  [style*="repeat(3, minmax(0, 1fr))"] {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  /* Requirement section */
-
-  [style*="0.75fr 1.25fr"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Footer */
-
-  [style*="1.6fr 0.8fr 0.8fr 0.8fr"] {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  /* Hero typography */
-
-  h1 {
-    font-size: clamp(38px, 10vw, 52px) !important;
-    line-height: 1.05 !important;
-    letter-spacing: -1.5px !important;
-  }
-
-  h2 {
-    font-size: clamp(30px, 8vw, 43px) !important;
-    line-height: 1.08 !important;
-  }
-
-  /* Prevent text from creating horizontal width */
-
-  h1,
-  h2,
-  h3,
-  p,
-  span,
-  strong {
-    max-width: 100%;
-    overflow-wrap: break-word;
-  }
-
-  /* Mobile spacing */
-
-  section {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
-
-  /* Hero */
-
-  [style*="90px 28px 85px"] {
-    padding: 55px 20px 50px !important;
-  }
-
-  /* Hero buttons */
-
-  [style*="heroButtons"] {
-    width: 100%;
-  }
-
-  /* Cards */
-
-  [style*="heroCard"] {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  /* Requirement card */
-
-  [style*="requirementCard"] {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  /* Form preview */
-
-  [style*="formPreview"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Footer */
-
-  footer {
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* Don't allow buttons to exceed screen */
-
-  a,
-  button {
-    max-width: 100%;
-  }
-}
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 480px) {
-  section {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-
-  h1 {
-    font-size: 38px !important;
-  }
-
-  h2 {
-    font-size: 30px !important;
-  }
-
-  /* One column on small phones */
-
-  [style*="repeat(4, minmax(0, 1fr))"],
-  [style*="repeat(3, minmax(0, 1fr))"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Statistics */
-
-  [style*="statGrid"] {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  /* Footer */
-
-  [style*="footerInner"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  [style*="footerBottom"] {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
-}
-
-/* =========================================================
-   BS4G RESPONSIVE LAYOUT
-   Desktop stays desktop.
-   Mobile becomes mobile.
-========================================================= */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-/* =========================================================
-   GLOBAL HOME CONTAINER
-========================================================= */
-
-.home-container {
-  width: min(1180px, calc(100% - 56px));
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.home-header {
-  width: 100%;
-  position: relative;
-  z-index: 50;
-}
-
-.home-header-inner {
-  width: min(1180px, calc(100% - 56px));
-  min-height: 76px;
-  margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.home-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: inherit;
-  flex-shrink: 0;
-}
-
-.home-logo img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  display: block;
-}
-
-.home-logo-main {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 700;
-}
-
-.home-logo-sub {
-  margin-top: 4px;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.home-desktop-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 22px;
-}
-
-.home-desktop-nav a {
-  text-decoration: none;
-  color: #1f3a5c;
-  white-space: nowrap;
-}
-
-.home-customer-button,
-.home-team-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 42px;
-  padding: 0 16px;
-
-  border-radius: 10px;
-  text-decoration: none !important;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.home-customer-button {
-  background: #a8733c;
-  color: white !important;
-}
-
-.home-team-button {
-  border: 1px solid #d9cba6;
-  background: white;
-}
-
-.home-mobile-menu-button {
-  display: none;
-  border: 1px solid #d9cba6;
-  background: white;
-  color: #1f3a5c;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-}
-
-.home-mobile-menu {
-  display: none;
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.home-hero {
-  width: 100%;
-}
-
-.home-hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr);
-  gap: 70px;
-  align-items: center;
-}
-
-.home-hero-content {
-  min-width: 0;
-}
-
-.home-hero-content h1 {
-  overflow-wrap: break-word;
-}
-
-.home-ledger-card {
-  min-width: 0;
-  width: 100%;
-}
-
-/* =========================================================
-   TWO COLUMN SECTIONS
-========================================================= */
-
-.home-two-column {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 70px;
-  align-items: start;
-}
-
-.home-section-title {
-  min-width: 0;
-  overflow-wrap: break-word;
-}
-
-.home-body-text {
-  min-width: 0;
-  overflow-wrap: break-word;
-}
-
-/* =========================================================
-   INFORMATION CARDS
-========================================================= */
-
-.home-info-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-/* =========================================================
-   ACTIVITIES
-========================================================= */
-
-.home-activity-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.home-activity-card {
-  min-width: 0;
-}
-
-/* =========================================================
-   OUTLETS
-========================================================= */
-
-.home-outlet-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.home-outlet-card {
-  min-width: 0;
-}
-
-/* =========================================================
-   CONNECT
-========================================================= */
-
-.home-connect-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 70px;
-  align-items: start;
-}
-
-.home-contact-panel {
-  min-width: 0;
-}
-
-/* =========================================================
-   REQUIREMENT
-========================================================= */
-
-.home-requirement-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
-  gap: 70px;
-  align-items: start;
-}
-
-.home-requirement-card {
-  min-width: 0;
-}
-
-.home-form-preview {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.home-preview-full {
-  grid-column: 1 / -1;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.home-footer-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 0.8fr 0.8fr 0.8fr;
-  gap: 40px;
-}
-
-.home-footer-brand {
-  min-width: 0;
-}
-
-.home-footer-column {
-  min-width: 0;
-}
-
-.home-footer-bottom {
-  width: min(1180px, calc(100% - 56px));
-  margin: 0 auto;
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .home-container,
-  .home-header-inner,
-  .home-footer-bottom {
-    width: min(100% - 40px, 760px);
-  }
-
-  .home-desktop-nav {
-    gap: 12px;
-  }
-
-  .home-desktop-nav > a:not(.home-customer-button):not(.home-team-button) {
-    display: none;
-  }
-
-  .home-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .home-two-column {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .home-connect-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .home-requirement-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .home-activity-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .home-info-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .home-outlet-grid {
-    grid-template-columns: 1fr 1fr;
   }
 
   .home-footer-grid {
@@ -1854,15 +1279,6 @@ body {
 ========================================================= */
 
 @media (max-width: 640px) {
-
-  html,
-  body,
-  #root {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
   .home-container,
   .home-header-inner,
   .home-footer-bottom {
@@ -1874,11 +1290,14 @@ body {
 
   .home-header-inner {
     min-height: 68px;
+
     gap: 12px;
   }
 
   .home-logo {
     min-width: 0;
+
+    gap: 9px;
   }
 
   .home-logo img {
@@ -1900,37 +1319,46 @@ body {
 
   .home-mobile-menu-button {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
+
     flex-shrink: 0;
   }
 
   .home-mobile-menu {
     display: flex;
     flex-direction: column;
+
     gap: 4px;
 
     width: calc(100% - 32px);
+
     margin: 0 auto;
+
     padding: 12px;
+
+    background: #faf6ec;
 
     border: 1px solid #d9cba6;
     border-radius: 14px;
 
-    background: #faf6ec;
-    box-shadow: 0 12px 30px rgba(31, 58, 92, 0.08);
+    box-shadow:
+      0 12px 30px rgba(31, 58, 92, 0.08);
   }
 
   .home-mobile-menu a {
     display: block;
+
     width: 100%;
+
     padding: 12px;
 
     border-radius: 8px;
 
-    text-decoration: none;
     color: #1f3a5c;
+
+    font-size: 12px;
     font-weight: 600;
+
+    text-decoration: none;
   }
 
   .home-mobile-menu a:hover {
@@ -1939,95 +1367,207 @@ body {
 
   .home-mobile-customer,
   .home-mobile-team {
-    text-align: center;
     margin-top: 4px;
+
+    text-align: center;
   }
 
   .home-mobile-customer {
     background: #a8733c;
+
     color: white !important;
   }
 
   .home-mobile-team {
-    border: 1px solid #d9cba6;
     background: white;
+
+    border: 1px solid #d9cba6;
+
+    color: #1f3a5c !important;
   }
 
   /* ---------------- HERO ---------------- */
 
   .home-hero-grid {
+    min-height: auto;
+
+    padding: 55px 0 50px;
+
     grid-template-columns: 1fr;
+
     gap: 32px;
+  }
+
+  .home-location {
+    margin-bottom: 18px;
+
+    font-size: 9px;
   }
 
   .home-hero-content h1 {
     font-size: clamp(36px, 11vw, 52px);
+
     line-height: 1.05;
+
     letter-spacing: -1.5px;
   }
 
-  .home-hero-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+  .home-hero-content > p {
+    margin-top: 20px;
+
+    font-size: 14px;
+    line-height: 1.7;
   }
 
-  .home-hero-buttons a {
+  .home-hero-buttons {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    margin-top: 25px;
+  }
+
+  .home-primary-button,
+  .home-secondary-button {
     width: 100%;
+
     justify-content: center;
   }
 
   .home-ledger-card {
     width: 100%;
+
+    padding: 22px;
+  }
+
+  .home-big-number {
+    margin-top: 30px;
+
+    font-size: 42px;
   }
 
   /* ---------------- SECTIONS ---------------- */
 
   .home-section {
     width: 100%;
+
+    padding: 60px 0;
+
     overflow: hidden;
+  }
+
+  .home-section-number {
+    margin-bottom: 22px;
+
+    font-size: 9px;
   }
 
   .home-section-title {
     font-size: clamp(30px, 9vw, 42px);
+
     line-height: 1.08;
+
+    letter-spacing: -1.2px;
+  }
+
+  .home-body-text {
+    font-size: 13px;
   }
 
   .home-two-column {
     grid-template-columns: 1fr;
+
     gap: 24px;
   }
 
-  /* ---------------- CARDS ---------------- */
+  /* ---------------- INFORMATION CARDS ---------------- */
 
   .home-info-grid {
     grid-template-columns: 1fr 1fr;
+
     gap: 12px;
+
+    margin-top: 40px;
   }
+
+  .home-info-card {
+    padding: 18px;
+  }
+
+  /* ---------------- ACTIVITIES ---------------- */
 
   .home-activity-grid {
     grid-template-columns: 1fr;
+
     gap: 12px;
+
+    margin-top: 35px;
   }
+
+  .home-activity-card {
+    min-height: auto;
+
+    padding: 22px;
+  }
+
+  .home-activity-card h3 {
+    margin-top: 20px;
+  }
+
+  /* ---------------- OUTLETS ---------------- */
 
   .home-outlet-grid {
     grid-template-columns: 1fr 1fr;
+
     gap: 12px;
+  }
+
+  .home-outlet-card {
+    min-height: 100px;
+
+    padding: 16px;
   }
 
   /* ---------------- CONNECT ---------------- */
 
   .home-connect-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+
+    gap: 35px;
+  }
+
+  .home-dark-title {
+    font-size: 38px;
+
+    letter-spacing: -1.5px;
   }
 
   /* ---------------- REQUIREMENT ---------------- */
 
   .home-requirement-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+
+    gap: 35px;
+  }
+
+  .home-requirement-card {
+    padding: 20px;
+  }
+
+  .home-login-prompt {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 18px;
+  }
+
+  .home-login-prompt .home-primary-button {
+    width: 100%;
+
+    justify-content: center;
   }
 
   .home-form-preview {
@@ -2038,21 +1578,15 @@ body {
     grid-column: auto;
   }
 
-  .home-login-prompt {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 18px;
-  }
-
-  .home-login-prompt a {
-    width: 100%;
-    justify-content: center;
-  }
-
   /* ---------------- FOOTER ---------------- */
+
+  .home-footer {
+    padding: 45px 0 0;
+  }
 
   .home-footer-grid {
     grid-template-columns: 1fr 1fr;
+
     gap: 30px 20px;
   }
 
@@ -2062,7 +1596,9 @@ body {
 
   .home-footer-bottom {
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 8px;
   }
 }
@@ -2072,7 +1608,6 @@ body {
 ========================================================= */
 
 @media (max-width: 400px) {
-
   .home-container,
   .home-header-inner,
   .home-footer-bottom {
@@ -2098,5 +1633,17 @@ body {
 
   .home-hero-content h1 {
     font-size: 36px;
+  }
+
+  .home-big-number {
+    font-size: 38px;
+  }
+
+  .home-section-title {
+    font-size: 29px;
+  }
+
+  .home-stat-grid {
+    gap: 12px;
   }
 }
